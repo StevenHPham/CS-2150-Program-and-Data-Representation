@@ -1,0 +1,4 @@
+W  (2,4):	tee
+N  (3,2):	text
+0
+2 words found

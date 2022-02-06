@@ -1,0 +1,48 @@
+	global _binarySearch
+	section .text
+
+	;; register rdi is a pointer to the array
+	;; register rsi is the left int
+	;; register rdx is the right int
+	;; register rcx is the target int
+
+	;; register r10 is where we are at in the array
+	;; if [r10] is equal to rcx , je (jump equal) to found
+	;; use [r10] or r10 to get the target int?
+	
+_binarySearch:
+	xor rax , rax 		;zero out return counter
+	xor r10 , r10		;zero out the array position
+	
+	cmp rsi , rdx		;if low > high, go to notfound
+	jg notfound
+
+	mov r10 , rsi		;save the old index
+	add rsi , rdx
+	shr rsi , 1		;get the middle element of array & assign it to r10 (add rsi and rdx and div 2)
+
+	mov eax , DWORD [rdi + 4*rsi] ;get middle array element
+
+	
+	cmp eax , ecx		;compare the array element we're at w/ target
+	je found 		;jump to found if they equal
+
+	jl less			;if not found, is eax > or < than ecx
+	
+	mov rsi , r10 		;end up here if element is greater than targe
+	jmp binarySearch
+
+
+
+
+less:	mov rdx , rsi		;jump here if element is less than target
+	jmp binarySearch
+	
+
+notfound:
+	mov rax , -1 		;return -1 if element is not found
+	ret
+
+
+found:	mov rax , rsi		;return the found int
+	ret

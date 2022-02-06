@@ -1,0 +1,27 @@
+#include "ListItr.h"
+
+ListItr::ListItr(){
+  current = 0;
+}
+
+ListItr::ListItr(ListNode* theNode){
+  current = theNode;
+}
+
+#Methods
+
+bool ListItr::isPastEnd() const {
+  return 0;
+}
+
+bool ListItr::isPastBeginning() const{
+  return 0;
+}
+
+void ListItr::moveForward(){}
+
+void ListItr::moveBackward(){}
+
+int  ListItr::retrieve(){
+  return current;
+}

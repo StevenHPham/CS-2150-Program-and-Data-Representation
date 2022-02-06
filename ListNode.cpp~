@@ -1,0 +1,14 @@
+#include "ListNode.h"
+
+ListNode::ListNode(){
+  value     = 0;
+  next      = 0;
+  previous  = 0;
+}
+
+ListNode::ListNode(int val){
+  value    = val;
+  next     = 0;
+  previous = 0;
+}
+

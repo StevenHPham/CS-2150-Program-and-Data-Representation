@@ -1,0 +1,41 @@
+#include "List.h"
+
+
+
+
+//Constructors
+
+List::List(){
+  head  = 0;
+  tail  = 0;
+  count = 0;
+}
+
+//Copy constructor
+List::List(const List& source){
+  head  = source.head;
+  tail  = source.tail;
+  count = source.count;
+}
+
+//Destructor
+List::~List(){}
+
+
+
+
+//Methods
+void List::insertAtTail(int x){
+  
+}
+
+//What is the type of an iterator?
+
+/* missing type */  ListItr::first(){}
+
+int List::size() const {
+  return count;
+}
+
+void ListItr::printList(List& source, bool forward){
+}

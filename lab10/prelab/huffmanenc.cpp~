@@ -1,0 +1,8 @@
+#include "heap.h"
+#include "tree.h"
+#include "huffmanNode.h"
+
+#include <string>
+#include <iostream>
+#include <stdio.h>
+#include <stdlib.h>

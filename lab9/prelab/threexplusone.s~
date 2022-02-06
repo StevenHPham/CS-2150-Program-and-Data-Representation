@@ -1,0 +1,43 @@
+	;; Optimization 1: instead of using idiv to check for remainder, I used test
+	;; to check for odd/even numbers since odd have a right-most bit of 1 and even 0. 
+	
+	global _threexplusone
+
+	section .text
+
+	;; register rdi holds (n) input integer
+	;; register r10 holds steps counter
+
+_threexplusone:
+	xor rax , rax 		;zero out the return (steps) register
+
+
+begin:	cmp 1 , rdi		;compare rdi (n) to 1 // base case
+	jle end			;if n <= 1, jump to end (should return 0)
+	
+	
+	test rdi , 1		;flag set to 0 if even , 1 is odd (if x is even)
+	jnz odd			;jump if not zero to odd flag (else.. jump to odd)
+	
+
+even: 	mov rax , rdi		;set rdi to rax for idiv
+	mov r9 , 2		;set r9 = 2 for idiv
+	idiv r9			;rax (input) / r9... at this point we have rax = n/2
+	mov rdi , rax		;move new rax back to rdi and go back to recursion
+	inc r10			;increment r10 steps counter
+	call _threexplusone	;recursion 
+	
+
+
+
+odd:	lea rdi , [1+3*rdi]		;if x is odd, we land here
+	inc r10				;increment r10
+	call _threexplusone		;recursion
+
+
+
+	
+end:	mov rax , r10		;move counter to rax
+	ret			;return steps counter
+				
+	

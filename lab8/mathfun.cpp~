@@ -1,0 +1,24 @@
+#include <iostream>
+#include <cstdlib>
+
+using namespace std;
+
+extern "C" int product(int, int);
+extern "C" int power(int, int);
+
+int main(){
+
+  int x , y , mult , exp;
+
+  cout << "Please enter a number: " << endl;
+  cin >> x;
+  cout << "Please enter another number: " << endl;
+  cin >> y;
+
+  mult = product(x,y);
+  exp = power(x,y);
+  cout << "The product of " << x << " and " << y << " is: " << mult << endl;
+  cout << x  << " to the power of "  << y << " is: " << exp << endl;
+
+  return 0;
+}

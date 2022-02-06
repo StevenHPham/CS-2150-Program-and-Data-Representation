@@ -1,0 +1,11 @@
+#include "huffmanNode.h"
+
+using namespace std;
+
+huffmanNode::huffmanNode(char c , int freq){
+  freq = freq;
+  c = c;
+  left = NULL;
+  right = NULL;
+  prefix = "";
+}

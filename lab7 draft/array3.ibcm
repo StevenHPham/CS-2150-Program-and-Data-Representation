@@ -1,0 +1,140 @@
+C01F 000		 	
+0000 001 a[0] 
+0000 002 a[1]
+0000 003 a[2]
+0000 004 a[3]
+0000 005 a[4]
+0000 006 a[5]
+0000 007 a[6]
+0000 008 a[7]
+0000 009 a[8]
+0000 00A a[9]
+007F 00B a[] mem address
+0000 00C
+0000 00D
+0000 00E int i index for max - i loop
+0001 00F 1
+0000 010 0
+0000 011
+0000 012
+0010 013 max 10 loops
+0000 014 temp
+0000 015
+0000 016
+3000 017 load helper
+4000 018 store helper
+5000 019 add helper
+6000 01A sub helper
+F000 01B F helper
+0000 01C p
+0000 01D j
+0000 01E k
+3010 01F set i = 0
+400E 020 set i = 0
+3013 021 load max 
+600E 022 max - i
+D03B 023 halt loop if max - i= 0 pass through, go to sort function
+1000 024 start take input
+4014 025 store in temp
+B000 026
+B000 027
+B000 028
+3018 029 use store helper to store in bottom array
+500B 02A add a[] mem add
+500E 02B add index
+4030 02C store load function in deci 49
+B000 02D
+B000 02E put temp in a[i] starts at hex 01
+3014 02F load up temp
+0000 030 load function goes here
+C057 031 jump to 2nd store function that stores in top array
+B000 032
+B000 033 increment i
+300F 034 load i
+5010 035 add 1
+400F 036 store i
+C021 037 loop back deci 34
+B000 038
+B000 039
+B000 03A halt loop exit here, at this point we have 10 elements unsorted, begin unsorting
+3017 03B load helper
+500B 03C add in a[] mem address of bottom array
+501D 03D add in j index
+4041 03E load it to deci 66
+B000 03F
+B000 040 compare between a[j] and a[j+1] , seeing which one is smaller by reaching 0 first
+0000 041 load a[0] pass in by reference cuz it changes from bottom array
+600F 042 subtract by 1
+D054 043 if a[j] = 0, go to loop that increment j++ and then loop back to deci 59 
+301B 044 load F function 
+500B 045 add in a[] 
+501D 046 add in j index
+4048 047 load it to deci 73
+0000 048 at this point we have value of a[j+1] ; load a[j+1] pass in by reference
+600F 049 subtract by 1
+C061 04A if a[j+1] = 0, we need to flip the position, go to that loop
+C03B 04B if not go back to deci 59
+B000 04C
+B000 04D
+B000 04E
+B000 04F 
+B000 050
+B000 051
+B000 052
+B000 053 loop that increment j
+301D 054 load j
+500F 055 add 1
+C03B 056 go back to deci 59
+3018 057 use store helper for top array
+5001 058 add a[0] mem add
+501C 059 add p index
+405C 05A store it in deci 93
+3014 05B load up temp
+0000 05C
+301C 05D load p 
+500F 05E increment p
+C033 05F loop back to deci 52
+B000 060 flip position loop
+3018 061 load helper
+500_ 062 add in a[] mem address
+501F 063 add in k index
+*B000 064 store it to deci ___
+B000 065
+B000 066
+B000 067
+B000 068
+B000 069
+B000 06A
+B000 06B
+B000 06C
+B000 06D
+B000 06E
+B000 06F
+B000 070
+B000 071
+B000 072
+B000 073
+B000 074
+B000 075
+B000 076
+B000 077
+B000 078 
+B000 079 
+B000 07A
+B000 07B
+B000 07C
+B000 07D
+B000 07E
+0000 07F a[0]
+0000 080 a[1]
+0000 081 a[2]
+0000 082 a[3]
+0000 083 a[4]
+0000 084 a[5]
+0000 085 a[6]
+0000 086 a[7]
+0000 087 a[8]
+0000 088 a[9]
+0000 089 halt
+
+

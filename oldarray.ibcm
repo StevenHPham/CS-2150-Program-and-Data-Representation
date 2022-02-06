@@ -1,0 +1,32 @@
+C00A 000	jmp 	start 	skip around the variables
+0000 001 i 	dw 	0 	int i
+0000 002 s 	dw 	0 	int s
+0000 003 a 	dw 	0	
+0000 004 n 	dw 	0	int n array size
+0000 005 zero 	dw 	0
+0001 006 one 	dw 	1
+4000 007 stoit 	dw 	4000
+0000 008 			leave space for changes
+0000 009
+1000 00A start 	readH 		read array size
+4004 00B 	store 	n
+3005 00C 	load 	zero 	i = 0;
+4001 00D 	store 	i
+3004 00E loop 	load 	n 	if (i >= N) goto xit
+6001 00F 	sub 	i
+E020 010 	jmpl 	xit	exit to mem 01A
+D020 011 	jmpe 	xit
+1000 012	readH	s	read in s
+4002 013	load	s	load s
+C01D 014	jmp	
+5002 015	add	s
+401C 016	store	doit
+4002 017 	store 	s
+3001 018 	load 	i 	i += 1
+5006 019 	add 	one
+4001 01A 	store 	i
+C00E 01B	jmp	loop	goto loop
+B000 01C doit	halt
+1800 01D	printH  s	print s
+C015 01E	jmp
+0000 020	halt

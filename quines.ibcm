@@ -1,0 +1,19 @@
+C005 00 skip
+3000 01 load helper
+0001 02 1
+0011 03 max number of lines for while loop
+0000 04 index 
+3003 05 start load max
+6004 06 subtract index
+E010 07 jump to end if less than 0
+3001 08 load helper
+5004 09 add index
+400B 0A store it
+0000 0B store here
+1800 0C printH
+3004 0D load index
+5002 0E add 1
+4004 0F store index
+C005 10 jump back to start
+0000 11 loop back
+0000 12 end

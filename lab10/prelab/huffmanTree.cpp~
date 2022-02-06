@@ -1,0 +1,12 @@
+#include "huffmanTree.h"
+
+using namespace std;
+
+huffmanTree::huffmanTree(){
+  root = NULL;
+}
+
+huffmanTree::~huffmanTree(){
+  delete root;
+}
+

@@ -1,0 +1,17 @@
+#ifndef HUFFMANTREE_H
+#define HUFFMANTREE_H
+
+#include "heap.h"
+#include "huffmanNode.h"
+
+using namespace std;
+
+class huffmanTree{
+ public:
+  huffmanTree();
+  ~huffmanTree();
+
+  huffmanNode *root;
+
+  heap huffmanTree(heap h);
+}

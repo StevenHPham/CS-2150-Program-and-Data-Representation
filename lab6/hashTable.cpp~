@@ -1,0 +1,182 @@
+#include <iostream>
+#include <string>
+#include <vector>
+#include <fstream>
+#include <string>
+#include <list>
+
+#include "hashTable.h"
+using namespace std;
+
+
+hashTable::hashTable(int size){// create a table with size of the dictionary,
+  //static vector<list<string>> table;
+  table = new vector<list<string>>;
+  //cout << "before resize expected: 0" << endl;
+  //cout  << table->size() << endl;
+  table->resize(size) ;
+  //cout << "past first resize expected 30" << endl;
+  //cout  << table->size() << endl;
+  
+  if( checkprime( size ) ){
+    table_size = 2 * size;
+  }else{
+    table_size *= 2;
+    table_size = getNextPrime( size );
+  }
+ 
+  table->resize( table_size  );
+  //cout << "last resize to next prime number" << endl;
+  //cout  << table->size() << endl;
+
+  for(int i = 0; i < table_size; i++) {
+  list<string> temp;
+  table->push_back(temp);
+  //cout << temp << endl;
+  
+  }
+} 
+
+// hashTable::~hashTable(){
+//    delete[] table;
+// }
+
+int hashTable::size(){
+  return table_size;
+}
+
+
+unsigned int hashTable::hashFunction(string value){
+  
+  const unsigned int power = 37;
+  unsigned int hash = 0;
+  unsigned int p_power = 1;
+  for (char i = 0; i < value.length(); i++){
+    hash = (hash + ( i - 'a' + 1) * p_power) % table_size;
+  p_power = (p_power * power) % table_size;
+  }
+  return hash;
+}
+
+void hashTable::insert(string value){
+  table->at(hashFunction(value)).push_back(value);
+  // cout << "[inside function] word is inserted" << endl;
+}
+
+bool hashTable::count(string value){
+
+  list<string> &list = table->at(hashFunction(value));
+  for(::list<string>::iterator i = list.begin(); i != list.end(); i++){
+    
+    if (value == *i){
+      //cout << list.front() << endl;
+      return true;
+    }
+  }
+  return false;
+}
+
+bool hashTable::checkprime(unsigned int p) {
+    if ( p <= 1 ) // 0 and 1 are not primes; the are both special cases
+        return false;
+    if ( p == 2 ) // 2 is prime
+        return true;
+    if ( p % 2 == 0 ) // even numbers other than 2 are not prime
+        return false;
+    for ( int i = 3; i*i <= p; i += 2 ) // only go up to the sqrt of p
+        if ( p % i == 0 )
+            return false;
+    return true;
+}
+
+int hashTable::getNextPrime (unsigned int n) {
+    while ( !checkprime(++n) );
+    return n; // all your primes are belong to us
+}
+
+
+// int main(){
+//   hashTable t(30);
+//   cout << t.hashFunction("words") << endl;
+//   cout << t.hashFunction("anotheraone") << endl;
+//   t.insert("word");
+  
+//   return 0;
+// }
+
+
+
+
+// int hashTable::size(){
+//   return table.size();
+// }
+
+
+  
+  //raise to powers of 37
+ 
+  // chain = new vector<list<string>>;
+  // for(int i = 0; i < tableSize; i++){
+  //   list<string> s;
+  //   chain->push_back(s);
+  // }
+  
+//}
+
+// bool hashTable::isEmpty() const{
+//   int sum{};
+//   for (int i{}; i < hashGroups; i++){
+//     sum += table[i].size();
+//   }
+
+//   if (!sum){
+//     return true;
+//   }
+//   return false;
+// }
+
+
+// void hashTable::remove(string key){
+//   int hashValue = hashFunction(key);
+//   auto& cell = table[hashValue];
+//   auto bItr = begin(cell);
+//   bool keyExists = false;
+
+//   for(; bItr != end(cell); bItr++){
+//     if (bItr->first == key){
+//       keyExists = true;
+//       bItr = cell.erase(bItr);
+//       cout << "Pair removed" << endl;
+//     }
+//   }
+//   if(!keyExists){
+//     cout << "Key not found" << endl;
+//   }
+  
+// }
+
+// void hashTable::printTable(){
+//   for(int i = 0; i < 10; i++){
+//     if(table[i].size() == 0){
+//       continue;
+
+//     }
+//     auto bItr = table[i].begin();
+//     for (; bItr != table[i].end(); bItr++){
+//       cout << bItr->first << " " <<  bItr->second << endl;
+//      } 
+//   }
+//   return ;
+// }
+
+//int main(){
+  // hashTable HT;
+
+  //  string file;
+  //  cout << "Enter file name: ";
+  //  cin >> file;
+  //  readIn(file);
+   
+  
+//  return 0;
+//}

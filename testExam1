@@ -1,0 +1,8 @@
+#include <iostream>
+using namespace std;
+
+int main(){
+
+*s = new int(7);
+delete s;
+}

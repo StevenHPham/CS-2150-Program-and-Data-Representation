@@ -1,0 +1,181 @@
+C01F 000	jump	start	skip around the variables		 	
+0000 001 a[0]	dw	0	a[0] 
+0000 002 a[1]	dw 	0	a[1]
+0000 003 a[2]	dw	0	a[2]
+0000 004 a[3]	dw	0	a[3]
+0000 005 a[4]	dw 	0	a[4]
+0000 006 a[5]	dw	0	a[5]
+0000 007 a[6]	dw	0	a[6]
+0000 008 a[7]	dw	0	a[7]
+0000 009 a[8]	dw	0	a[8]
+0000 00A a[9]	dw	0	a[9]
+00AA 00B a[]	dw	8C	bottom mem address
+0001 00C a[]			top mem address		
+B000 00D				
+0000 00E i	dw	0	index for max - i loop
+0001 00F 1	dw	1	
+0000 010 0	dw	0
+B000 011 			
+B000 012 			
+0010 013 max	dw	10	10 loops
+0000 014 temp	dw	0
+B000 015 			
+B000 016  			
+3000 017 load	dw	3000	load helper
+4000 018 store	dw	4000	helper
+5000 019 add 	dw	5000	helper
+6000 01A sub 	dw	6000	helper
+F000 01B F 	dw	F000	helper
+0000 01C p	dw	0	p index
+0000 01D j	dw	0	j index
+0000 01E k	dw	0	k index
+3010 01F start	load	i	set i = 0
+400E 020 	store	i	set i = 0
+3013 021 loop1	load	max	for loop, go to  sort function loop2 if max - i = 0
+600E 022 	sub	i	max - i
+D037 023 	jmpe 	xit	loop if max - i= 0 pass through, go to sort function loop2
+1000 024 	readH	     	take input
+4014 025 	store 	temp	in temp
+B000 026 			
+B000 027 					
+B000 028 					
+3018 029 	load	ldit	use store helper to store in bottom array
+500B 02A 	add 	a[] 	
+500E 02B 	add 	i
+4030 02C 	store		load store function in load1 to put temp in bottom array
+B000 02D 			
+B000 02E 						
+3014 02F 			load up temp
+0000 030 load1	dw	0	load function goes here
+C064 031  		jmp	repeat for top array jump to 2nd store function that stores in top array
+B000 032  			increment i
+300E 033 	load		load i
+500F 034 	add	1	add 1
+400E 035  	store		store i
+C021 036 end1			loop back loop1
+3013 037 loop2	xit1		load max. This is sorting function
+601D 038 	sub	1	subtract j
+D096 039 xit4			if max - j == 0 , exit to print
+3017 03A 			load helper ; halt loop exit here, at this point we have 10 elements unsorted,begin unsorting
+500B 03B 			add in a[] mem address of bottom array
+501D 03C 			add in j index
+4041 03D 			load it to load2
+B000 03E 			compare between a[j] and a[j+1] , seeing which one is smaller by reaching 0 first
+0000 03F load2			load a[0] pass in by reference cuz it changes from bottom array
+600F 040 			subtract by 1
+D05F 041  			if a[j] = 0, go to loop that increment j++ and then loop back to xit1
+4014 042 			store in temp
+3018 043 			call store  function
+500B 044 			add bottom array index
+501D 045 			add j index
+4049 046 			store it
+3014 047     			load up temp
+0000 048 			load store in bottom array
+301B 049  			load F function 
+500B 04A  			add in a[] 
+501D 04B  			add in j index
+4048 04C  			load it to load3
+0000 04D load3			at this point we have value of a[j+1] ; load a[j+1] pass in by reference
+600F 04E  			subtract by 1
+C06E 04F 			if a[j+1] = 0, we need to flip the position, go to that loop
+4014 050   			store in temp
+4018 051 			call store function
+500B 052 			add a[] bottom array mem add
+500D 053 			add bottom array index j
+500F 054  			add 1
+4057 055 			store it
+3014 056 			load temp
+0000 057 			load store in j+1 bottom array
+C037 058  			if not go back to xit1
+B000 059  
+B000 05A  			
+B000 05B 
+B000 05C 
+B000 05D 
+B000 05E 
+B000 05F  			loop that increment j
+301D 060 			load j
+500F 061 	 		add 1
+401D 062 			store j
+C038 063 	 		go back to xit1
+3018 064 	 		use store helper for top array
+500C 065 	 		add a[0] mem add
+500E 066 	     		add i index
+4069 067 	 		store it 
+3014 068 	 		load up temp
+0000 069 	 		store it
+301C 06A 			load p 
+500F 06B 	 		increment p
+C033 06C 	 		loop back to 33
+B000 06D 	 		flip position loop
+3017 06E      	 		load helper
+500C 06F      	 		add in a[0] mem address***
+501D 070      			add in j index
+500F 071 			add in 1
+4073 072     	 		store it to deci ___***
+0000 073 			load up a[j+1] value
+4014 074 			store in temp ;  int temp = A[j]
+3018 075 load4			store function
+500B 076  			add a[] bottom array
+500D 077 			add j index
+407A 078 store4			store it in 
+3014 079 			load temp
+0000 07A store4			load store it in previous array bottom
+3017 07B 			load helper
+500C 07C 			add a[] top array address
+501D 07D 			add j index
+4000 07E 			store it in next line
+0000 07F 			load function bring up 
+4014 080 			store in temp
+3018 081  			store function
+500B 082 			add a[] bottom array
+500D 083 			add j index
+500F 084 			add 1
+4087 085 store5			store command in 87
+3014 086 			load temp
+0000 087 store5			store temp in next array
+C060 088 			loop back to increment j
+301B 089 			load F function
+500C 08A 			add a[0]
+501D 08B 			add in j index
+0000 08C 			we have value of a[j+1] & want to store it in a[j]
+4014 08D 			store in temp
+4014 08E 			get a[j] mem add, load j
+301D 08F 			subtract 1
+600F 090 			add a[0]
+5017 091 			load helper
+4072 092 			store
+3014 093 			load temp
+0000 094 			a[j+1] -> a[j]
+C053 095 			loop back to j increment
+3106 096  xit1			load a[0]     			     
+1800 097			print
+3107 098  			load a[1]
+1800 099			print
+3108 09A  			load a[2]     
+1800 09B			print
+3109 09C			load a[3]  			     
+1800 09D			print
+310A 09E 			load a[4] 			     
+1800 09F			print
+310B 0A0  			load a[5]     
+1800 0A1			print
+310C 0A2  			load a[6]
+1800 0A3			print
+310D 0A4  			load a[7]
+1800 0A5			print
+310E 0A6  			load a[8]
+1800 0A7			print
+310F 0A8  			load a[9]
+1800 0A9			print
+0000 0AA 			 a[0]
+0000 0AB  	 		 a[1]
+0000 0AC  	 		 a[2]
+0000 0AD  	 		 a[3]
+0000 0AE  	 		 a[4]
+0000 0AF  	 		 a[5]
+0000 0B0  	 		 a[6]
+0000 0B1  	 		 a[7]
+0000 0B2  	 		 a[8]
+0000 0B3  	 		 a[9]
+0000 0B4  	 		 halt

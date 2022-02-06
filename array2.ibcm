@@ -1,0 +1,24 @@
+C00A 000	jmp	start	skip
+0000 001 i	dw	0	int index
+0000 002 n	dw	0	int n
+0000 003 a	dw	0	int array size
+0000 004 m	dw	0	int m
+0000 005 zero	dw	0
+0001 006 one	dw	1
+0000 007
+0000 008
+0000 009
+1000 00A  start readH		read number of inputs
+4003 00B  	store		array size
+3005 00C	load	zero	i=0;
+4001 00D	store	i
+3003 00E loop	load	a	if( i >= a ) goto exit
+6001 00F 	sub 	i
+E020 010 	jmpl 	xit	exit to mem 01A
+D020 011 	jmpe 	xit
+1000 012	readH	n	read in n
+4002 013	load	n	load n
+3001 018 	load 	i 	i += 1
+5006 019 	add 	one
+4001 01A 	store 	i
+C00E 01B	jmp	loop	goto loop

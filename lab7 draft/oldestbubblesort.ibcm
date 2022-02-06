@@ -1,0 +1,74 @@
+C016	000		jmp	start	skip around variables
+0010	001	max	dw	10	10
+0003	002	a[]	dw	0	array a[]
+0001	003	a[0]	dw	1	a[0] = 1
+0002	004	a[1]	dw	2	a[1] = 2
+0003	005	a[2]	dw	3	a[2] = 3
+0004	006	a[3]	dw	4	a[3] = 4
+0005	007	a[4]	dw	5	a[4] = 5
+0006	008	a[5]	dw	6	a[5] = 6
+0007	009	a[6]	dw	7	a[6] = 7
+0008	00A	a[7]	dw	8	a[7] = 8
+0009	00B	a[8]	dw	9	a[8] = 9
+0010	00C	a[9]	dw	10	a[9] = 10
+0000	00D	i	dw	0	0
+0009	00E	j	dw	9	9
+0001	00F	one	dw	1	1
+0000	010	temp	dw	0	0
+0000	011	prev	dw	0	
+3000	012	ldit	dw	3000	load helper
+4000	013	sdit	dw	4000	store helper
+0000	014	curr	dw	0	0
+0000	015	b	dw	0	b
+3001	016	start	load	max	while i < max
+600D	017		sub	i	
+E048	018		jmpl	xit	if max-i < 0 goto xit
+D048	019		jmpe	xit	if max-i < 0 goto xit	
+B000	01A
+300E	01B	loop	load	j	while i < j
+600D	01C		sub	i	
+E041	01D		jmpl	xit2	i++ loop
+D041	01E		jmpe	xit2	i++ loop
+1000	01F		readH		b	
+4015	020		store		b
+3012	021		load	ldit	plant load instruction
+5002	022		add	a[]	
+500E	023		add	j	a[j]
+4025	024		store	doit	plant load instruction
+0000	025	doit	dw	0	stores current
+4014	026		store	curr	a[j] = current
+600F	027		sub	1	a[j-1]
+5013	028		add		store helper
+402A	029		store	doit2	plant instruction
+0000	02A	doit2	dw	0	store previous
+4011	02B		store	prev	store previous
+3014	02C		load	curr	loads current 
+6011	02D		sub 	prev	subtract prev from current
+E030	02E		jmpl	doit3	jmp to endl if less than zero
+C03D	02F		jmp	endl	jump to the end of the loop
+3013	030	doit3	load	sdit	a[j] = prev
+5002	031		add	a[]	
+500E	032		add	j	a[j]
+4035	033		store	doit4	
+3011	034		load	prev	loads previous  
+0000	035	doit4	dw	0
+3013	036		load	sdit	a[j-1] = curr
+5002	037		add	a[]
+500E	038		add	j	a[j]
+600F	039		sub 	one	j--
+403C	03A		store	doit5	plant instruction
+3014	03B		load	curr	load current 
+0000	03C	doit5	dw	0	
+300E	03D	endl	load	j	j--
+600F	03E		sub 	one	
+400E	03F		store	j	stores j value
+C01C	040		jmp 	loop	return to beginning
+300D	041	xit	load	i	i++
+500F	042		add 	one	
+400D	043		store	i	store i 
+3001	044		load 	max	load max
+600F	045		sub 	one 	reset value
+400E	046		store	j	store j 
+C017	047		jmp 	start	return to start
+1800	048		printH	
+0000	049	xit	halt

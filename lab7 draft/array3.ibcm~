@@ -1,0 +1,66 @@
+C020	
+0000 a[0]
+0000 a[1]
+0000 a[2]
+0000 a[3]
+0000 a[4]
+0000 a[5]
+0000 a[6]
+0000 a[7]
+0000 a[8]
+0000 a[9]
+0010 
+0000
+0000
+0000 int i index for max - i loop
+0001 1
+0000 0
+0000 
+0000
+0010 max 10 loops
+0000 temp
+0000
+0000
+3000 load helper
+4000 store helper
+5000 add helper
+6000 sub helper
+0000
+0000
+0000
+0000
+1800 start take input
+4015 store in temp
+3010 set i = 0
+400E set i = 0
+3014 load max 
+600E max - i
+D03E halt loop if max - i= 0 pass through
+B000
+B000
+B000 
+3018 use load helper
+5015 add pass in temp value
+4030 store load function in __
+B000
+B000 put temp in a[i] starts at hex 01
+3015 load up temp
+0000 load function goes here
+B000
+B000
+B000 increment i
+3010 load i
+500F add 1
+4010 store i
+C024 loop back dec 36
+B000
+B000
+B000
+B000
+B000
+B000
+B000 halt loop exit here, at this point we have 10 elements unsorted, begin unsorting
+
+
+
+

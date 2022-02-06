@@ -1,0 +1,32 @@
+#include <iostream>
+#include "timer.h"
+
+using namespace std;
+
+//extern "C" int threeexplusone(int n , int iter);
+
+int main(){
+  int n;
+  cout << "Enter a number: ";
+  cin >> n;
+
+  int iter;
+  cout << "Enter iterations of subroutine: ";
+  cin >> iter;
+  
+
+  timer time;
+  time.start();
+  
+  int result = threeexplusone(n,iter);
+
+  time.stop();
+  int sec = time.getTime();
+  cout << sec << endl;
+
+  
+  cout << "Steps: " << result << endl;
+
+  return 0;
+}
+

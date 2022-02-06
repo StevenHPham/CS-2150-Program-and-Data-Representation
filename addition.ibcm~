@@ -1,0 +1,28 @@
+C00A 000	jmp 	start 	skip around the variables
+0000 001 i 	dw 	0 	int i
+0000 002 s 	dw 	0 	int s
+0000 003 N 	dw 	0 	int N
+0001 004 one 	dw 	1
+0000 005 zero 	dw 	0
+0000 006			leave space for changes
+0000 007
+0000 008
+0000 009
+1000 00A start 	readH 	i	read i
+4001 00B 	store	i
+1000 00C 	readH 	s 	read s
+4002 00D 	store 	s
+1000 00E 	readH 	N 	read N
+4003 00F 	store 	N
+3001 010   	load 	i 	load i
+5002 011 	add 	s	add s to i
+5003 012 	add 	N	add N to i
+D016 013	jmpe		if a == 0, go to 16
+1800 014 	printH 	 	print accumulator
+0000 015 	halt
+3001 016	load	i	load i
+1800 017	printH  i	print i
+3002 018	load	s	load s
+1800 019	printH	s	print s
+3003 01A	load	N	load N
+1800 01B	printH	N	print N

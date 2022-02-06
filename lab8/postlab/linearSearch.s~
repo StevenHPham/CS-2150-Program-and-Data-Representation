@@ -1,0 +1,9 @@
+; linearSearch.s
+
+;; purpose: This file contains imnplementation of the function
+;; linear search
+
+	global _linearSearch
+
+	section .text
+
