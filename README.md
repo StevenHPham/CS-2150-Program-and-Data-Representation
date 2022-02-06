@@ -1,6 +1,6 @@
 # CS-2150-Program-and-Data-Representation
 
-##Introduction
+## Introduction
 
 This repository contains the materials for the course entitled “CS 2150: Program and Data Representation” in the Computer Science Department at the University of Virginia. It contains all of the slides, labs, exams, etc., used throughout the course. The course description is below. The github repository for this course is at https://github.com/uva-cs/pdr. It can be viewed online at http://uva-cs.github.io/pdr/.
 
@@ -10,7 +10,7 @@ Students who were previously in the course may want to view the current version,
 
 The primary authors of this repository are Mark Floryan (mrf8t@cs.virginia.edu), Rich Nguyen (nn4pj@virginia.edu), and Aaron Bloomfield (aaron@virginia.edu). Many students and faculty have worked on this course material over the years.
 
-##Repository Contents
+## Repository Contents
 
 Note that the links below will not work correctly if you are viewing this online at github.com – you will need to clone (download) the repository first
 
@@ -38,7 +38,7 @@ At that point, I will receive a notice that a change has been submitted, and I�
 
 When you want to bring in the updates from the main pdr github repository into your forked repository, you will need to follow the instructions here.
 
-##Course Description
+## Course Description
 
 This course is a second-year course for computer science majors. It is the primary data structures course in the University of Virginia’s computer science curriculum. Unlike many other data structure courses at other institutions, it is intended as the third course in sequence, meaning that students are expected to have taken two semesters of Java (or equivalent, although some of the examples are specifically from Java). The course focuses on how programs and data are represented from the high level down to the low level. For programs, we examine (from high to low): abstract data types, Java code, C++ code, C code, assembly (x86) code, and a customized machine language. For data, we examine (also from high to low): abstract data types, objects, primitive types, and how numbers are encoded (both floats (IEEE 754) and integers (two’s complement)). About two-thirds of this course is programming using C++. The remainder of this course uses other languages, including (in decreasing order): x86 assembly, IBCM (a machine language), C, Objective C, and shell scripting.
 
@@ -57,11 +57,11 @@ For all the Markdown files in this repository, both the original (.md) file and 
 
 Note that Github supports an enhanced version of Markdown, called Github Flavored Markdown, or GFM. This mostly pertains to this README file. In an effort to ensure compatibility with other Markdown programs (such as the one described here and what reveal.js uses), GFM specific features are generally avoided. One example is the use of anchors in this document – the HTML tags are included instead of using GFM’s version.
 
-##Source code
+## Source code
 
 All source code is formatted via astyle and then highlighted via source-highlight. Both the original file (foo.cpp) and the highlighted version (foo.cpp.html) are included in the repository. All links to source code will like to the .html, with a “(src)” after it to link to the original source code. Utility scripts are provided to convert all the files in the utils (md) directory. make format and make highlight can also be run to invoke the scripts.
 
-##License
+## License
 
 The material in this repository is released under a Creative Commons Attribution-ShareAlike 4.0 International License (CC BY-SA).
 
